@@ -1,6 +1,3 @@
-# USAGE
-# python detect_apriltag.py --image images/example_01.png
-
 # import the necessary packages
 import apriltag
 import argparse
@@ -36,19 +33,19 @@ for r in results:
 	ptA = (int(ptA[0]), int(ptA[1]))
 
 	# draw the bounding box of the AprilTag detection
-	cv2.line(image, ptA, ptB, (0, 255, 0), 2)
-	cv2.line(image, ptB, ptC, (0, 255, 0), 2)
-	cv2.line(image, ptC, ptD, (0, 255, 0), 2)
-	cv2.line(image, ptD, ptA, (0, 255, 0), 2)
+	cv2.line(image, ptA, ptB, (0, 255, 0), 1)
+	cv2.line(image, ptB, ptC, (0, 255, 0), 1)
+	cv2.line(image, ptC, ptD, (0, 255, 0), 1)
+	cv2.line(image, ptD, ptA, (0, 255, 0), 1)
 
 	# draw the center (x, y)-coordinates of the AprilTag
 	(cX, cY) = (int(r.center[0]), int(r.center[1]))
-	cv2.circle(image, (cX, cY), 5, (0, 0, 255), -1)
+	cv2.circle(image, (cX, cY), 3, (0, 0, 255), -1)
 
 	# draw the tag family on the image
 	tagFamily = r.tag_family.decode("utf-8")
 	cv2.putText(image, tagFamily, (ptA[0], ptA[1] - 15),
-		cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+		cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 	print("[INFO] tag family: {}".format(tagFamily))
 
 # show the output image after AprilTag detection
